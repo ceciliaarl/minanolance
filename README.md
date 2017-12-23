@@ -11,3 +11,5 @@ A ideia é que, no futuro e após melhorias no código, também sejam agregadas 
 Paralelamente ao recurso de alertas por e-mail, a consulta ao site alimenta uma planilha que armazena todos os jogos da competição. Esse banco de dados pode ser posteriormente utilizado para pautar reportagens relacionadas à visibilidade de modalidades femininas na grande mídia.
 
 Código elaborado por uma (total) iniciante em Python, que sabe que ainda há muito a melhorar.
+
+Elaborado com base nos conhecimentos adquiridos no MOOC de Introdução a Python para Jornalistas, promovido pelo KnightCenter e Google.
