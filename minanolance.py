@@ -83,12 +83,12 @@ if volei == True:
     
 if volei == False:
     naovai = input('Não vai ter jogo. Quer enviar um e-mail de alerta mesmo assim? (sim/não) ')
-    if naovai.lower() == sim:        
+    if naovai.lower() == "sim":        
         naotemjogo = MIMEText("""Hoje não tem jogo na SuperLiga de vôlei, vamos esperar a próxima partida ;)\n\nminanolance""")
         naotemjogo['Subject'] = "Hoje não tem jogo :("
         naotemjogo['From'] = remetente
         naotemjogo['To'] = ", ".join(destinatarios)
         server.sendmail(remetente, destinatarios, naotemjogo.as_string())
         server.quit()
-    elif naovai.lower() == não:
+    elif naovai.lower() == "não":
         print('Então até a próxima checagem!')
