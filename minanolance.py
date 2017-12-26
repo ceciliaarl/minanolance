@@ -4,6 +4,7 @@ from datetime import datetime
 hoje = datetime.now().date()
 remetente = ' ' # Digite seu endereço de e-mail (ex: 'email@email.com)
 senha = ' ' # Digite a senha do seu e-mail (ex: '12345')
+destinatarios = [' ')] # ex: email@email.com, email2@email.com
 
 msg = '\nOlá! \n\nPrepare sua torcida, porque hoje tem jogo da Superliga Feminina de Vôlei. Se liga no que vai rolar:\n\n'
 superliga = []
@@ -74,7 +75,6 @@ server.starttls()
 server.login(remetente, senha)
 
 if volei == True:
-    destinatarios = [input('Para qual e-mails deseja enviar o alerta? Separe vários e-mails com vírgula ')] # ex: email@email.com, email2@email.com
     msg['Subject'] = "Hoje tem jogo!"
     msg['From'] = remetente
     msg['To'] = ", ".join(destinatarios)
@@ -82,10 +82,13 @@ if volei == True:
     server.quit()
     
 if volei == False:
-    destinatarios = [input('Para qual e-mails deseja enviar o alerta? Separe vários e-mails com vírgula\n ')] # ex: email@email.com, email2@email.com
-    naotemjogo = MIMEText("""Hoje não tem jogo na SuperLiga de vôlei, vamos esperar a próxima partida ;)\n\nminanolance""")
-    naotemjogo['Subject'] = "Hoje não tem jogo :("
-    naotemjogo['From'] = remetente
-    naotemjogo['To'] = ", ".join(destinatarios)
-    server.sendmail(remetente, destinatarios, naotemjogo.as_string())
-    server.quit()
+    naovai = input('Não vai ter jogo. Quer enviar um e-mail de alerta mesmo assim? (sim/não) ')
+    if naovai.lower() == sim:        
+        naotemjogo = MIMEText("""Hoje não tem jogo na SuperLiga de vôlei, vamos esperar a próxima partida ;)\n\nminanolance""")
+        naotemjogo['Subject'] = "Hoje não tem jogo :("
+        naotemjogo['From'] = remetente
+        naotemjogo['To'] = ", ".join(destinatarios)
+        server.sendmail(remetente, destinatarios, naotemjogo.as_string())
+        server.quit()
+    elif naovai.lower() == não:
+        print('Então até a próxima checagem!')
