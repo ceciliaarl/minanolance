@@ -4,7 +4,7 @@ Projeto piloto submetido para concorrer a workshop de Python no Google São Paul
 O programa checa se haverá alguma partida da SuperLiga Feminina de Vôlei na data atual. 
 Em caso positivo, envia e-mail informando horário, times que irão se enfrentar e se o jogo será televisionado ou não.
 Em caso negativo, envia e-mail informando que não vai ter jogo. 
-O e-mail é disparado para múltiplos usuários. O usuário digita quais e-mails devem receber o alerta. 
+O e-mail é disparado para múltiplos usuários. O usuário programa quais e-mails devem receber o alerta numa variável que está dentro do código. 
 
 A ideia é que, no futuro e após melhorias no código, também sejam agregadas outras modalidades femininas (futebol, handebol etc). A ferramenta visa conscientizar os torcedores sobre a importância de pressionar os veículos de imprensa para dar mais reconhecimento a essas modalidades. No futuro, também pode se tornar uma ferramenta que informa o torcedor sobre os resultados dos jogos. 
 
