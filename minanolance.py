@@ -81,6 +81,7 @@ if volei == True:
     msg['To'] = ", ".join(destinatarios)
     server.sendmail(remetente, destinatarios, msg.as_string())
     server.quit()
+    print("Alerta enviado. Até a próxima checagem") 
     
 if volei == False:
     naovai = input('Não vai ter jogo. Quer enviar um e-mail de alerta mesmo assim? (sim/não) ')
