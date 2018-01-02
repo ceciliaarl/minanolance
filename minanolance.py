@@ -4,7 +4,7 @@ from datetime import datetime
 hoje = datetime.now().date()
 remetente = ' ' # Digite seu endereço de e-mail (ex: 'email@email.com)
 senha = ' ' # Digite a senha do seu e-mail (ex: '12345')
-destinatarios = [' '] # ex: email@email.com, email2@email.com
+destinatarios = [' , '] # ex: 'email@email.com, email2@email.com'
 
 msg = '\nOlá! \n\nPrepare sua torcida, porque hoje tem jogo da Superliga Feminina de Vôlei. Se liga no que vai rolar:\n\n'
 superliga = []
@@ -75,6 +75,7 @@ server.starttls()
 server.login(remetente, senha)
 
 if volei == True:
+    print("Hoje tem jogo! Enviando alerta.")    
     msg['Subject'] = "Hoje tem jogo!"
     msg['From'] = remetente
     msg['To'] = ", ".join(destinatarios)
