@@ -36,11 +36,16 @@ for linha in bloco:
     horario = linha.find("div", {"class": "col-sm-2 ranking-item data"}).text.strip()
     if horario.endswith("TV"):
         break
+    elif horario.endswith("ANDAMENTO"):
+        break
     data = horario.split(' | ')[0]
     hora = horario.split(' | ')[1]
     data = datetime.strptime(data, "%d/%m/%Y").date()
+
     
     equipes = linha.find("div", {"class": "col-sm-7 ranking-item equipes"}).text.strip()
+    if "3" in equipes:
+        break
     time1 = equipes.split(' X ')[0]
     time1 = time1.strip().title()
     time2 = equipes.split(' X ')[1]
@@ -69,19 +74,18 @@ msg += f'\nVamos prestigiar os jogos dessa rodada e continuar cobrando cada vez 
 import smtplib
 from email.mime.text import MIMEText
 msg = MIMEText(msg)
-server = smtplib.SMTP('', 587) # Digite seu servidor SMTP de e-mail (ex: 'smtp-mail.outlook.com')
+server = smtplib.SMTP('smtp-mail.outlook.com', 587) # Digite seu servidor SMTP de e-mail (ex: 'smtp-mail.outlook.com')
 server.ehlo()
 server.starttls()
 server.login(remetente, senha)
 
 if volei == True:
-    print("Hoje tem jogo! Enviando alerta.")    
+    print("Hoje tem jogo! Enviando alerta.")
     msg['Subject'] = "Hoje tem jogo!"
     msg['From'] = remetente
     msg['To'] = ", ".join(destinatarios)
     server.sendmail(remetente, destinatarios, msg.as_string())
     server.quit()
-    print("Alerta enviado. Até a próxima checagem") 
     
 if volei == False:
     naovai = input('Não vai ter jogo. Quer enviar um e-mail de alerta mesmo assim? (sim/não) ')
@@ -93,4 +97,4 @@ if volei == False:
         server.sendmail(remetente, destinatarios, naotemjogo.as_string())
         server.quit()
     elif naovai.lower() == "não":
-        print('Então até a próxima checagem!')
+        print('Então, até a próxima checagem!')
