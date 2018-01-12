@@ -2,9 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 hoje = datetime.now().date()
-remetente = ' ' # Digite seu endereço de e-mail (ex: 'email@email.com)
+remetente = ' ' # Digite seu endereço de e-mail (ex: 'email@email.com')
 senha = ' ' # Digite a senha do seu e-mail (ex: '12345')
-destinatarios = [' , '] # ex: 'email@email.com, email2@email.com'
+destinatarios = [' , '] # (ex: 'email@email.com, email2@email.com')
 
 msg = '\nOlá! \n\nPrepare sua torcida, porque hoje tem jogo da Superliga Feminina de Vôlei. Se liga no que vai rolar:\n\n'
 superliga = []
@@ -23,13 +23,13 @@ for linha in bloco:
     canal = canal.find("img")
     if 'redetv' in str(canal):
         televisionado = True
-        RedeTV = True
+        emissora = 'RedeTV'
     elif 'sportvcom' in str(canal):
         televisionado = True
-        Sportvcom = True
+        emissora = 'Sportvcom'
     elif 'sportv.png' in str(canal):
         televisionado = True
-        Sportv = True
+        emissora = 'Sportv'
     elif canal == None:
         televisionado = False
         
@@ -57,17 +57,17 @@ for linha in bloco:
     if data == hoje and televisionado == False:
         msg += f'- {hora} - {time1} x {time2}, mas não vai ser transmitido.\n'
         volei = True
-    elif data == hoje and televisionado == True and RedeTV == True:
+    elif data == hoje and televisionado == True and emissora == 'RedeTV':
         msg += f'- {hora} - {time1} x {time2}, com transmissão pela RedeTV. Não deixe de assistir!\n'
         volei = True
-    elif data == hoje and televisionado == True and Sportv == True:
+    elif data == hoje and televisionado == True and emissora == 'Sportv':
         msg += f'- {hora} - {time1} x {time2}, com transmissão pelo SporTV. Não deixe de assistir!\n'
         volei = True
-    elif data == hoje and televisionado == True and Sportvcom == True:
+    elif data == hoje and televisionado == True and emissora == 'Sportvcom':
         msg += f'- {hora} - {time1} x {time2}, com transmissão pelo SporTV.COM. Não deixe de assistir!\n'
         volei = True
 
-msg += f'\nVamos prestigiar os jogos dessa rodada e continuar cobrando cada vez mais visibilidade do vôlei feminino na televisão.\n\n Bons jogos!\n\nminanolance'
+msg += f'\nVamos prestigiar os jogos dessa rodada e continuar cobrando cada vez mais visibilidade do vôlei feminino na televisão.\n\nBons jogos!\n\n// minanolance'
 
 # Envio de e-mails
 
