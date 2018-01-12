@@ -6,7 +6,7 @@ remetente = ' ' # Digite seu endereço de e-mail (ex: 'email@email.com')
 senha = ' ' # Digite a senha do seu e-mail (ex: '12345')
 destinatarios = [' , '] # (ex: 'email@email.com, email2@email.com')
 
-msg = '\nOlá! \n\nPrepare sua torcida, porque hoje tem jogo da Superliga Feminina de Vôlei. Se liga no que vai rolar:\n\n'
+msg = '\nOlá! \n\nPrepare sua torcida, porque hoje tem jogo da Superliga Feminina de Vôlei.\nSe liga no que vai rolar:\n\n'
 superliga = []
 volei = False
 
