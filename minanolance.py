@@ -51,20 +51,14 @@ for linha in bloco:
     time2 = equipes.split(' X ')[1]
     time2 = time2.strip().title()
     
-    partida = {"Data": data, "Horário": hora, "Equipe 1": time1, "Equipe 2": time2}
+    partida = {"Data": data, "Horário": hora, "Equipe 1": time1, "Equipe 2": time2, "Emissora": emissora}
     superliga.append(partida)
     
     if data == hoje and televisionado == False:
         msg += f'- {hora} - {time1} x {time2}, mas não vai ser transmitido.\n'
         volei = True
-    elif data == hoje and televisionado == True and emissora == 'RedeTV':
-        msg += f'- {hora} - {time1} x {time2}, com transmissão pela RedeTV. Não deixe de assistir!\n'
-        volei = True
-    elif data == hoje and televisionado == True and emissora == 'Sportv':
-        msg += f'- {hora} - {time1} x {time2}, com transmissão pelo SporTV. Não deixe de assistir!\n'
-        volei = True
-    elif data == hoje and televisionado == True and emissora == 'Sportvcom':
-        msg += f'- {hora} - {time1} x {time2}, com transmissão pelo SporTV.COM. Não deixe de assistir!\n'
+    elif data == hoje and televisionado == True
+        msg += f'- {hora} - {time1} x {time2}, com transmissão via {emissora}. Não deixe de assistir!\n'
         volei = True
 
 msg += f'\nVamos prestigiar os jogos dessa rodada e continuar cobrando cada vez mais visibilidade do vôlei feminino na televisão.\n\nBons jogos!\n\n// minanolance'
